@@ -139,7 +139,7 @@ function solution(A, X) {
 function test(S) {
   let pattern =
     /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\^&*()_])[0-9a-zA-Z!@#$%\^&*()_]{6,}$/;
-  console.log(pattern.test(S));
+
   return pattern.test(S);
 }
 
@@ -229,3 +229,21 @@ const minCost = (s, cost) => {
   }
   return res;
 };
+function findPrimeNumber(num) {
+  let array = [];
+  // create an array contains 2-100 numbers
+  for (let i = 2; i <= num; i++) {
+    array[i] = i;
+  }
+  //using sqrt to get result
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    for (let j = i + 1; j <= num; j++) {
+      if (array[i] != 0 && array[j] != 0 && array[j] % array[i] === 0) {
+        array[j] = 0;
+      }
+    }
+  }
+  const newArray = array.filter((num) => num !== 0);
+  console.log("prime number array", newArray);
+}
+findPrimeNumber(100);
