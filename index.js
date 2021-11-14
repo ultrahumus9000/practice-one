@@ -246,4 +246,61 @@ function findPrimeNumber(num) {
   const newArray = array.filter((num) => num !== 0);
   console.log("prime number array", newArray);
 }
-findPrimeNumber(100);
+
+// Write a function: that, given two non-negative integers A and B, returns the number of bits set to 1 in the binary representation of the number A * B. For example, given A = 3 and B = 7 the function should return 3, because the binary representation of A * B = 3 * 7 = 21 is 10101 and it contains three bits set to 1. Assume that: In your solution, focus on correctness. The performance of your solution will not be the focus of the assessment
+
+// 2 parameter, non-negative
+// a*b = value
+// find how many 1s in this binary value
+
+// each index of the binary result
+
+function findOneInBinary(num1, num2) {
+  const nonBinaryValue = num1 * num2;
+
+  // convert to binary value first
+  const binaryArray = [];
+  while (nonBinaryValue <= 1) {
+    // keep dividing 2 till i found the final 0/1
+  }
+
+  // hash table, final binary result
+
+  // use a filter to find out how many ones o(N)
+
+  // find how many one's
+  // count
+}
+
+function findSingnalInArray(arr) {
+  let zeros = [];
+  let ones = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === 0 && arr[i + 1] === 0 && i !== arr.length - 1) {
+      zeros.push(0);
+    }
+
+    if (arr[i] === 1 && arr[i + 1] === 1 && i !== arr.length - 1) {
+      ones.push(1);
+    }
+
+    if (i === arr.length - 1) {
+      if (arr[i] === 1 && arr[i - 1] === 1) {
+        ones.push(1);
+      } else if (arr[i] === 0 && arr[i - 1] === 0) {
+        zeros.push(0);
+      }
+    }
+  }
+
+  if (zeros.length > ones.length) {
+    console.log("ones", ones.length, "zeros", zeros.length, "return 0");
+
+    return 0;
+  } else {
+    console.log("ones", ones.length, "zeros", zeros.length);
+    return ones.length;
+  }
+}
+findSingnalInArray([0, 1, 0, 1, 1, 0, 0, 0, 0]);
