@@ -256,20 +256,15 @@ function findPrimeNumber(num) {
 // each index of the binary result
 
 function findOneInBinary(num1, num2) {
-  const nonBinaryValue = num1 * num2;
+  let nonBinaryValue = num1 * num2;
 
   // convert to binary value first
-  const binaryArray = [];
-  while (nonBinaryValue <= 1) {
-    // keep dividing 2 till i found the final 0/1
+  let count = 0;
+  while (nonBinaryValue >= 1) {
+    count += nonBinaryValue & 1;
+    nonBinaryValue = nonBinaryValue >> 1;
   }
-
-  // hash table, final binary result
-
-  // use a filter to find out how many ones o(N)
-
-  // find how many one's
-  // count
+  return count;
 }
 
 function findSingnalInArray(arr) {
@@ -303,4 +298,3 @@ function findSingnalInArray(arr) {
     return ones.length;
   }
 }
-findSingnalInArray([0, 1, 0, 1, 1, 0, 0, 0, 0]);
