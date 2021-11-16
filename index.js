@@ -298,3 +298,28 @@ function findSingnalInArray(arr) {
     return ones.length;
   }
 }
+
+function reverseString(string) {
+  const newStringArr = string.split("");
+
+  const newReverseArr = newStringArr.reverse();
+
+  return newReverseArr.join("");
+}
+
+function reverseStringOrg(string) {
+  const stringLength = string.length;
+  let newArr = [];
+
+  // for (let i = 0; i < stringLength; i++) {
+  //   newArr[stringLength - 1 - i] = string[i];
+  // }
+
+  for (let i = stringLength - 1; i >= 0; i--) {
+    newArr.push(string[i]);
+  }
+  console.log(newArr.join(""));
+
+  return newArr.join("");
+}
+reverseStringOrg("hi i am lin");
