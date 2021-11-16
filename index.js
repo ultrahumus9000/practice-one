@@ -322,4 +322,37 @@ function reverseStringOrg(string) {
 
   return newArr.join("");
 }
-reverseStringOrg("hi i am lin");
+
+function maxEven(arr, k) {
+  const length = arr.length;
+
+  if (k > length) return -1;
+
+  let odd = [];
+  let even = [];
+  let sum = arr
+    .sort((a, b) => b - a)
+    .slice(0, k)
+    .reduce(acc, (ele) => acc + ele);
+
+  if (sum % 2 === 0) {
+    return sum;
+  }
+
+  const leftArr = sorted.slice(0, k);
+  const rightArr = sorted.slice(k);
+
+  for (let i = leftArr.length - 1; i >= 0; i--) {
+    for (let j = 0; j < rightArr.length; j++) {
+      if ((leftArr[i] + rightArr[j]) % 2) {
+        return sum - leftArr[i] + rightArr[j];
+      }
+    }
+  }
+
+  if (sum % 2) {
+    return -1;
+  } else {
+    return sum;
+  }
+}
