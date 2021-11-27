@@ -356,3 +356,80 @@ function maxEven(arr, k) {
     return sum;
   }
 }
+
+const similarLicensePlates = (plate1, plate2) => {
+  const plate1Value = plate1.split("").filter((ele) => ele !== " ");
+
+  const plate2Value = plate2.split("").filter((ele) => ele !== " ");
+
+  console.log("plate2Value", plate2Value);
+  const resultCheckArr = [];
+  for (let i = 0; i < plate1Value.length; i++) {
+    if (plate1Value[i] === plate2Value[i]) {
+      resultCheckArr.push(true);
+    } else if (
+      plate1Value[i] === "O" ||
+      plate1Value[i] === "0" ||
+      plate1Value[i] === "Q"
+    ) {
+      if (
+        plate2Value[i] === "O" ||
+        plate2Value[i] === "0" ||
+        plate2Value[i] === "Q"
+      ) {
+        resultCheckArr.push(true);
+        console.log("378 resultCheckArr", resultCheckArr);
+      } else {
+        resultCheckArr.push(false);
+        console.log("381 resultCheckArr", resultCheckArr);
+      }
+    } else if (
+      plate1Value[i] === "1" ||
+      plate1Value[i] === "I" ||
+      plate1Value[i] === "T"
+    ) {
+      if (
+        plate2Value[i] === "1" ||
+        plate2Value[i] === "I" ||
+        plate2Value[i] === "T"
+      ) {
+        resultCheckArr.push(true);
+        console.log("397 resultCheckArr", resultCheckArr);
+      } else {
+        resultCheckArr.push(false);
+        console.log("400 resultCheckArr", resultCheckArr);
+      }
+    } else if (plate1Value[i] === "2" || plate1Value[i] === "Z") {
+      if (plate2Value[i] === "2" || plate2Value[i] === "Z") {
+        resultCheckArr.push(true);
+        console.log("407 resultCheckArr", resultCheckArr);
+      } else {
+        resultCheckArr.push(false);
+        console.log("410 resultCheckArr", resultCheckArr);
+      }
+    } else if (plate1Value[i] === "5" || plate1Value[i] === "S") {
+      if (plate2Value[i] === "5" || plate2Value[i] === "S") {
+        resultCheckArr.push(true);
+        console.log("417 resultCheckArr", resultCheckArr);
+      } else {
+        resultCheckArr.push(false);
+        console.log("420 resultCheckArr", resultCheckArr);
+      }
+    } else if (plate1Value[i] === "8" || plate1Value[i] === "B") {
+      if (plate2Value[i] === "8" || plate2Value[i] === "B") {
+        resultCheckArr.push(true);
+        console.log("427 resultCheckArr", resultCheckArr);
+      } else {
+        resultCheckArr.push(false);
+        console.log("430 resultCheckArr", resultCheckArr);
+      }
+    } else {
+      resultCheckArr.push(false);
+    }
+  }
+
+  const result = resultCheckArr.every((ele) => ele === true);
+  console.log(result);
+  return result;
+};
+similarLicensePlates("A88I2", "A   B8T2");
