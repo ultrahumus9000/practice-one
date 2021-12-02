@@ -104,7 +104,6 @@ const twoSum = function (nums, target) {
   const comp = {};
 
   for (let i = 0; i < nums.length; i++) {
-    console.log(comp[nums[i]], i);
     if (comp[nums[i]] >= 0) {
       return [comp[nums[i]], i];
     }
@@ -135,6 +134,7 @@ function solution(A, X) {
 
   return -1;
 }
+console.log(solution([1, 2, 3, 3, 4, 5, 6], 3));
 
 function findPrimeNumber(num) {
   let array = [];
@@ -338,6 +338,9 @@ function test(S) {
 
   return pattern.test(S);
 }
+const regex = /^(?=.*\d)/;
+
+const result = regex.test("linlin");
 
 function reverseInt(N) {
   var enable_print = N % 10;
