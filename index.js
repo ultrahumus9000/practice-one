@@ -136,99 +136,6 @@ function solution(A, X) {
   return -1;
 }
 
-function test(S) {
-  let pattern =
-    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\^&*()_])[0-9a-zA-Z!@#$%\^&*()_]{6,}$/;
-
-  return pattern.test(S);
-}
-
-function so(N) {
-  var enable_print = N % 10;
-  while (N > 0) {
-    if (enable_print == 0 && N % 10 != 0) {
-      enable_print = 1;
-    } else if (enable_print == 1) {
-      // process.stdout.write((N % 10).toString());
-      console.log(N % 10);
-      console.log("haha", N);
-    }
-    N = parseInt(N / 10);
-    console.log("157", N);
-  }
-  console.log("158", N);
-}
-
-function seat(N, S) {
-  // write your code in JavaScript (Node.js 8.9.4)
-  let num = 1;
-  let counter = 0;
-  const reservedSeats = S.split(" ");
-
-  if (S === "") return 2 * N;
-
-  while (num < N) {
-    if (
-      reservedSeats.filter(
-        (seat) =>
-          !seat.includes(num + "B") ||
-          !seat.includes(num + "C") ||
-          !seat.includes(num + "D") ||
-          !seat.includes(num + "E")
-      )
-    ) {
-      const newSeats = [num + "B", num + "C", num + "D", num + "E"];
-      reservedSeats.push(...newSeats);
-      counter++;
-    }
-
-    if (
-      reservedSeats.filter(
-        (seat) =>
-          !seat.includes(num + "F") ||
-          !seat.includes(num + "G") ||
-          !seat.includes(num + "H") ||
-          !seat.includes(num + "J")
-      )
-    ) {
-      const newSeats = [num + "F", num + "G", num + "H", num + "J"];
-      reservedSeats.push(...newSeats);
-      counter++;
-    }
-
-    if (
-      reservedSeats.filter(
-        (seat) =>
-          !seat.includes(num + "D") ||
-          !seat.includes(num + "E") ||
-          !seat.includes(num + "F") ||
-          !seat.includes(num + "G")
-      )
-    ) {
-      const newSeats = [num + "D", num + "E", num + "F", num + "G"];
-      reservedSeats.push(...newSeats);
-      counter++;
-    }
-
-    num++;
-  }
-  console.log(reservedSeats);
-  console.log(counter);
-  return counter;
-}
-
-const minCost = (s, cost) => {
-  let res = 0;
-  for (let i = 0, max = 0; i < s.length; i++) {
-    res += cost[i];
-    max = Math.max(max, cost[i]);
-    if (s[i] !== s[i + 1]) {
-      res -= max;
-      max = 0;
-    }
-  }
-  return res;
-};
 function findPrimeNumber(num) {
   let array = [];
   // create an array contains 2-100 numbers
@@ -394,34 +301,26 @@ const similarLicensePlates = (plate1, plate2) => {
         plate2Value[i] === "T"
       ) {
         resultCheckArr.push(true);
-        console.log("397 resultCheckArr", resultCheckArr);
       } else {
         resultCheckArr.push(false);
-        console.log("400 resultCheckArr", resultCheckArr);
       }
     } else if (plate1Value[i] === "2" || plate1Value[i] === "Z") {
       if (plate2Value[i] === "2" || plate2Value[i] === "Z") {
         resultCheckArr.push(true);
-        console.log("407 resultCheckArr", resultCheckArr);
       } else {
         resultCheckArr.push(false);
-        console.log("410 resultCheckArr", resultCheckArr);
       }
     } else if (plate1Value[i] === "5" || plate1Value[i] === "S") {
       if (plate2Value[i] === "5" || plate2Value[i] === "S") {
         resultCheckArr.push(true);
-        console.log("417 resultCheckArr", resultCheckArr);
       } else {
         resultCheckArr.push(false);
-        console.log("420 resultCheckArr", resultCheckArr);
       }
     } else if (plate1Value[i] === "8" || plate1Value[i] === "B") {
       if (plate2Value[i] === "8" || plate2Value[i] === "B") {
         resultCheckArr.push(true);
-        console.log("427 resultCheckArr", resultCheckArr);
       } else {
         resultCheckArr.push(false);
-        console.log("430 resultCheckArr", resultCheckArr);
       }
     } else {
       resultCheckArr.push(false);
@@ -429,7 +328,152 @@ const similarLicensePlates = (plate1, plate2) => {
   }
 
   const result = resultCheckArr.every((ele) => ele === true);
-  console.log(result);
+
   return result;
 };
-similarLicensePlates("A88I2", "A   B8T2");
+
+function test(S) {
+  let pattern =
+    /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%\^&*()_])[0-9a-zA-Z!@#$%\^&*()_]{6,}$/;
+
+  return pattern.test(S);
+}
+
+function reverseInt(N) {
+  var enable_print = N % 10;
+  while (N > 0) {
+    if (enable_print == 0 && N % 10 != 0) {
+      enable_print = 1;
+    } else if (enable_print == 1) {
+      console.log(N % 10);
+    }
+    N = parseInt(N / 10);
+  }
+}
+
+function seat(N, S) {
+  // write your code in JavaScript (Node.js 8.9.4)
+  let num = 1;
+  let counter = 0;
+  const reservedSeats = S.split(" ");
+
+  if (S === "") return 2 * N;
+
+  while (num < N) {
+    if (
+      reservedSeats.filter(
+        (seat) =>
+          !seat.includes(num + "B") ||
+          !seat.includes(num + "C") ||
+          !seat.includes(num + "D") ||
+          !seat.includes(num + "E")
+      )
+    ) {
+      const newSeats = [num + "B", num + "C", num + "D", num + "E"];
+      reservedSeats.push(...newSeats);
+      counter++;
+    }
+
+    if (
+      reservedSeats.filter(
+        (seat) =>
+          !seat.includes(num + "F") ||
+          !seat.includes(num + "G") ||
+          !seat.includes(num + "H") ||
+          !seat.includes(num + "J")
+      )
+    ) {
+      const newSeats = [num + "F", num + "G", num + "H", num + "J"];
+      reservedSeats.push(...newSeats);
+      counter++;
+    }
+
+    if (
+      reservedSeats.filter(
+        (seat) =>
+          !seat.includes(num + "D") ||
+          !seat.includes(num + "E") ||
+          !seat.includes(num + "F") ||
+          !seat.includes(num + "G")
+      )
+    ) {
+      const newSeats = [num + "D", num + "E", num + "F", num + "G"];
+      reservedSeats.push(...newSeats);
+      counter++;
+    }
+
+    num++;
+  }
+  console.log(reservedSeats);
+  console.log(counter);
+  return counter;
+}
+
+const minCost = (s, cost) => {
+  let res = 0;
+  for (let i = 0, max = 0; i < s.length; i++) {
+    res += cost[i];
+    max = Math.max(max, cost[i]);
+    if (s[i] !== s[i + 1]) {
+      res -= max;
+      max = 0;
+    }
+  }
+  return res;
+};
+
+var findLeftBoundary = function (nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+  if (nums[left] > target) {
+    return -1;
+  }
+  let index = -1;
+  while (left <= right) {
+    let mid = parseInt(left + (right - left) / 2);
+
+    if (nums[mid] >= target) {
+      right = mid - 1;
+    } else {
+      left = mid + 1;
+    }
+    if (nums[mid] === target) {
+      index = mid;
+    }
+  }
+  return index;
+};
+
+var findRightBoundary = function (nums, target) {
+  let left = 0;
+  let right = nums.length - 1;
+  let index = -1;
+  if (nums[right] < target) {
+    return -1;
+  }
+
+  while (left <= right) {
+    let mid = parseInt(left + (right - left) / 2);
+
+    if (nums[mid] <= target) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+
+    if (nums[mid] === target) {
+      index = mid;
+    }
+  }
+
+  return index;
+};
+
+var searchRange = function (nums, target) {
+  const start = findLeftBoundary(nums, target);
+  const end = findRightBoundary(nums, target);
+
+  return [start, end];
+};
+
+searchRange([5, 7, 7, 8, 8, 10], 8);
