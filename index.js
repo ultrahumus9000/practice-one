@@ -269,7 +269,6 @@ const similarLicensePlates = (plate1, plate2) => {
 
   const plate2Value = plate2.split("").filter((ele) => ele !== " ");
 
-  console.log("plate2Value", plate2Value);
   const resultCheckArr = [];
   for (let i = 0; i < plate1Value.length; i++) {
     if (plate1Value[i] === plate2Value[i]) {
@@ -480,3 +479,30 @@ var searchRange = function (nums, target) {
 };
 
 searchRange([5, 7, 7, 8, 8, 10], 8);
+function solutionDirection(S) {
+  // write your code in JavaScript (Node.js 8.9.4)
+  let counter = 0;
+
+  for (let i = 0; i < S.length - 1; i++) {
+    if (S[i] === ">") {
+      i++;
+    } else {
+      if (i === S.length - 2) {
+        counter = counter + 2;
+      } else {
+        counter++;
+      }
+    }
+  }
+
+  if (
+    (S[S.length - 2] === ">" && S[S.length - 1] === ">") ||
+    (S[S.length - 2] === ">" && S[S.length - 1] === "^") ||
+    (S[S.length - 2] === ">" && S[S.length - 1] === "v")
+  ) {
+    counter++;
+  }
+
+  return counter;
+}
+solutionDirection("><^v>>");
