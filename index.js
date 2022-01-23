@@ -479,6 +479,8 @@ var searchRange = function (nums, target) {
 };
 
 searchRange([5, 7, 7, 8, 8, 10], 8);
+
+//HSBC
 function solutionDirection(S) {
   // write your code in JavaScript (Node.js 8.9.4)
   let counter = 0;
